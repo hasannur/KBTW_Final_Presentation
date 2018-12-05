@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+<html>
+<head>
+	<title>E-Learning-ID</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<header id="header">
+	<a class="logo" href="index.html">ELearning-HASAN.com</a>
+	<nav>
+		<a href="loginPage.html" >Login</a>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Nav -->
+<nav id="menu">
+	<ul class="links">
+		<li><a href="index.html">Home</a></li>
+		<li><a href="pageNews.html">Technology News and Events</a></li>
+		<li><a href="pageBook.html">E-Book Library</a></li>
+		<li><a href="pageLearning.html">Learning Center</a></li>
+	</ul>
+</nav>
+
+<!-- Heading -->
+			<div id="heading" >
+				<h1>Account Registration</h1>
+			</div>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<div class="content">
+                         <h2>Registration Form</h2>
+                    	<!-- Form -->
+						<form method="post" action="#">
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall"> Email
+									<input type="email" name="email" id="email" value="" placeholder="hasan.nur.arifin@hasan.com" required />
+								</div>
+                                <div class="col-6 col-12-xsmall"> Password
+                                    <input type="password" name="phone" id="password" value="" placeholder="........" required />
+                                </div>
+                              
+                                <div class="col-12">
+                                    <ul class="actions">
+                                        <li><button class="btn btn-primary" type="submit" onclick="register()">Register</button></li>
+                                        <li><input type="reset" value="Reset" /></li>
+                                    </ul>
+                                </div>
+						</div>
+						</form>
+					</div>
+				</div>
+			</section>
+
+
+<!-- Footer -->
+<div class="align-content-end align-self-end mb-auto footer-basic">
+	<footer>
+		<div class="social">
+			<a href="https://twitter.com/asan_azam?lang=en"><i class="icon fa-twitter"></i></a>
+			<a href="https://www.facebook.com/hasan.n.arifin"><i class="icon fa-facebook"></i></a>
+			<a href="https://instagram.com/asanazam07?utm_source=ig_profile_share&igshid=pdckrlsxupay"><i class="icon fa-instagram"></i></a>
+		</div>
+		<ul class="list-inline">
+			<li class="list-inline-item"><a href="index.html">Home</a></li>
+		</ul>
+		<p class="copyright">hasandotcom © 2018</p>
+	</footer>
+</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA3K3lQhCYB0PLIBkr-pRojvsBbcbnEPU8",
+    authDomain: "elearning-tkj.firebaseapp.com",
+    databaseURL: "https://elearning-tkj.firebaseio.com",
+    projectId: "elearning-tkj",
+    storageBucket: "elearning-tkj.appspot.com",
+    messagingSenderId: "412180372645"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+	function register() {
+		var email = document.getElementById('email').value;
+		var password = document.getElementById('password').value;
+
+		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		  // Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  // ...
+		  window.alert("Registrasi berhasil");
+		  window.location = "loginPage.html";
+		  
+		});
+	}
+</script>
+</html>

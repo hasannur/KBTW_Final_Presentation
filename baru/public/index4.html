@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+  </head>
+  <body>
+
+
+    <h1>List</h1>
+
+    <table border="1px">
+      <thead>
+        <th>No.</th>
+        <th>Nama</th>
+        <th>umur</th>
+      </thead>
+      <tbody id="show">
+
+      </tbody>
+    </table>
+
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+  <script>
+
+    // Inisialisasi Firebase
+    var config = {
+        apiKey: "AIzaSyBupDGLRkZkPESKg9xt8oiP6FK9Fi7jz-c",
+        authDomain: "e-learning-c7afc.firebaseapp.com",
+        databaseURL: "https://e-learning-c7afc.firebaseio.com",
+        projectId: "e-learning-c7afc",
+        storageBucket: "e-learning-c7afc.appspot.com",
+        messagingSenderId: "737605918755"
+      };
+      firebase.initializeApp(config);
+
+
+    //references database
+    var db = firebase.database();
+
+    var usersRef = db.ref('users'); //references table
+
+    //references.on('jenis nya', callbackSuccess, callbackError)
+    usersRef.on('value', showUser, showError);
+
+    //tambah data
+    usersRef.on('child_added', UserAdded);
+
+    //PUSH : tambah data + generate id
+    usersRef.push({
+      nama : "Riyan",
+      umur : 16
+    })
+
+
+    //hapus data
+    //usersRef.child('ID NYA').remove()
+    // usersRef.child('-LNuClpgSEWUG64H-N2-').remove()
+    //
+    // usersRef.on("child_removed",function (result) {
+    //   var deletedPost = result.val();
+    //   console.log( "data " + deletedPost.nama + " berhasil dihapus");
+    // });
+
+    //update data
+    // usersRef.update({
+    //   id: {
+    //     kolom : nilai,
+    //     kolom : nilai
+    //   }
+    // })
+
+    function UserAdded(result) {
+      console.log('Berhasil Nambah Data!')
+    }
+
+    //Nampilin Data
+    function showUser(result){
+
+      var _show = document.getElementById('show');
+      var _content = "";
+      var no = 1;
+
+      result.forEach(function(child){
+        _content += "<tr>";
+        _content += "<td>"+ no++ +"</td>";
+        _content += "<td>"+child.val().nama+"</td>";
+        _content += "<td>"+child.val().umur+"</td>";
+        _content += "</tr>";
+      })
+
+      _show.innerHTML = _content;
+
+      }
+
+
+    function showError(result){
+      console.log(result.val())
+    }
+
+
+
+
+  </script>
+  </body>
+</html>
